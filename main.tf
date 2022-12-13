@@ -27,9 +27,9 @@ description: 'An example of an Automation runbook that patches groups of Amazon 
 schemaVersion: '0.3'
 assumeRole: '{{AutomationAssumeRole}}'
 parameters:
-  # AutomationAssumeRole:
-  #   type: String
-  #   description: '(Required) The Amazon Resource Name (ARN) of the IAM role that allows Automation to perform the actions on your behalf. If no role is specified, Systems Manager Automation uses your IAM permissions to operate this runbook.'
+  AutomationAssumeRole:
+    type: String
+    description: '(Required) The Amazon Resource Name (ARN) of the IAM role that allows Automation to perform the actions on your behalf. If no role is specified, Systems Manager Automation uses your IAM permissions to operate this runbook.'
   SleepDuration:
     type: String
     description: "(Required) ISO xxxxxx time format for the duration of time to wait."
