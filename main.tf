@@ -52,30 +52,6 @@ mainSteps:
           - '{{InstanceId}}'
         # AutomationAssumeRole: '{{AutomationAssumeRole}}'
 
-  # wait for Server to reboot an reach running state
-  - name: verifyInstanceStopped
-    action: 'aws:waitForAwsResourceProperty'
-    timeoutSeconds: 120
-    inputs:
-      Service: ec2
-      Api: DescribeInstances
-      InstanceIds:
-        - '{{InstanceId}}'
-      PropertySelector: '$.Reservations[0].Instances[0].State.Name'
-      DesiredValues:
-        - stopped
-  - name: verifyInstanceRunning
-    action: 'aws:waitForAwsResourceProperty'
-    timeoutSeconds: 120
-    inputs:
-      Service: ec2
-      Api: DescribeInstances
-      InstanceIds:
-        - '{{InstanceId}}'
-      PropertySelector: '$.Reservations[0].Instances[0].State.Name'
-      DesiredValues:
-        - running
-
   # now that the Server is running, wait X number of minutes for the Server to finish starting its apps
   - name: WaitForApps
     action: 'aws:sleep'
